@@ -106,52 +106,6 @@ const Gameplay = (() => {
         squares[index].innerHTML = token;
     }
 
-    // const gameRound = (currentPlayer, opponent) => {
-    //     //FIRST: check to make sure Gameboard.board has open spaces; If not, game is a draw
-    //     if (!Gameboard.board.includes("")) {
-    //         // run draw procedures
-    //     }
-    //     // prompt player to enter their token in any open cell
-    //     // when entered, check to make sure cell is open
-    //     // if open, place token in Gameboard.board
-    //     const squares = document.querySelectorAll(".square");
-
-    //     squares.forEach(square => { //redo with four loop and .querySelectorAll(".square")[i]!!!
-    //         square.addEventListener("click", () => {
-    //             if (currentPlayer.isTurn && Gameboard.board[square.innerHTML] == "") {
-    //                 Gameboard.board[square.innerHTML] = currentPlayer.token;
-    //                 square.innerHTML = Gameboard.board[square.innerHTML]; //print token to screen
-    //                 square.style.color = "white"; //Makes X's and O's visible
-    //                 // Testing purposes
-    //                 console.log(Gameboard.board);
-    //                 // End currentPlayer's turn and check if they won
-    //                 currentPlayer.isTurn = false;
-
-    //                 if (Gameboard.checkWinConditions(currentPlayer)) {
-    //                     return;
-    //                 }
-
-    //                 // Switch player
-    //                 opponent.isTurn = true;
-    //                 gameRound(opponent, currentPlayer);
-    //             } else {
-    //                 return;
-    //             }
-    //         });
-    //     });
-
-
-
-    //     // if winConditions apply, end game (turn both player's turns to false) and announce winner
-    //     // ask player if they want to play again
-    //     // if winConditions do not apply, make currentPlayer.isTurn = false and opponent.isTurn = true and call
-
-    //     // gameRound(opponent, currentPlayer);
-    //     // else if closed, alert player to try another square
-    //     // 
-    // };
-
-    // gameRound(player1, player2); // Start first round
     initializeGame();
 })();
 

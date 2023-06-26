@@ -8,18 +8,18 @@
     width: 600px;
     height: 600px;
     margin: 0 auto;
-    background-color: #34495e;
-    color: #ffffff;
-    border: 6px solid #2c3e50;
-    border-radius: 10px;
+    background-color: #fff7e4;
+    color: #1b1b1b;
+    border: 2px solid rgb(70, 70, 70);
+    border-radius: 2px;
 
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
 .square {
-    border: 6px solid #2c3e50;
-    border-radius: 2px;
+    border: 2px solid rgb(70, 70, 70);
+    /* border-radius: 2px; */
     font-family: Helvetica;
     font-weight: bold;
     font-size: 4em;
