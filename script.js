@@ -1,11 +1,9 @@
 const Player = (playerName, symbol) => {
-    // prompt function to enter name
     let name = playerName;
     let token = symbol;
     let isTurn = false;
 
     return { name, token, isTurn };
-
 };
 
 const Gameboard = (() => {
