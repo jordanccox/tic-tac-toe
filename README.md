@@ -24,7 +24,7 @@ Later in my code, when I needed to initialize instances of the Player object, I 
 
 ### Modules
 
-Modules are similar to factory functions in that they are functions that return an object; however, the difference is modules will return exactly one object instance. They are implemented using an Immediately Invoked Function Expression (IIFE), which means the instance of the object is created right after the function is read by the interpreter.
+Modules are similar to factory functions in that they are functions that return an object; however, the difference is modules will return exactly one object instance. They are implemented using an [Immediately Invoked Function Expression (IIFE)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE), which means the instance of the object is created right after the function is read by the interpreter.
 
 One of the places I used this pattern was in constructing a Gameboard object. Since there is only one gameboard, I only needed one instance of this object:
 
