@@ -44,4 +44,4 @@ const Gameboard = (() => {
 })();
 ```
 
-The key pieces of this function are the beginning `(` and ending `)()` which wrap the contents of the function. The ending `()` is comparable to a regular function call you might use somewhere else in your code such as `myFunctionThatDoesAThing()`, except that it occurs right after the function expression, therefore executing the it immediately.
+The key pieces of this function are the beginning `(` and ending `)()` which wrap the contents of the function. The ending `()` is comparable to a regular function call you might use somewhere else in your code such as `myFunctionThatDoesAThing()`, except that it occurs right after the function expression, therefore executing it immediately.
