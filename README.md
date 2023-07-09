@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-## Summary
+## Design Patterns
 
 Inspiration for this project came from [the Odin Project curriculum](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe).
 
@@ -45,3 +45,6 @@ const Gameboard = (() => {
 ```
 
 The key pieces of this function are the beginning `(` and ending `)()` which wrap the contents of the function. The ending `()` is comparable to a regular function call you might use somewhere else in your code such as `myFunctionThatDoesAThing()`, except that it occurs right after the function expression, therefore executing it immediately.
+
+## Creating the Perfect Player with a Minimax Algorithm
+
