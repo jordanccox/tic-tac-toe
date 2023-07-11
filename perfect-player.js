@@ -68,15 +68,15 @@ function minimax(board, isMax) {
     let score = evaluateBoard(board);
 
     if (score == 1) {
-        return score;
+        return score; // x wins
     }
 
     if (score == -1) {
-        return score;
+        return score; // o wins
     }
 
     if (movesRemaining(board) == false) {
-        return 0; //draw
+        return 0; // draw
     }
 
     if (isMax) {
@@ -114,7 +114,7 @@ function minimax(board, isMax) {
     }
 }
 
-const OptimalMove = (best, player, isMax) => { //best: 10000 (min) or -10000 (max); player or opponent; isMax == false max and isMax== true min
+const OptimalMove = (best, player, isMax) => { //best: 10000 (min) or -10000 (max); player (max) or opponent (min); isMax == false for max and isMax == true for min
     const bestMove = (() => {
         let row = 0;
         let col = 0;
