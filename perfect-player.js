@@ -114,52 +114,7 @@ function minimax(board, isMax) {
     }
 }
 
-// const OptimalMove = (best, player, isMax) => {
-//     let bestVal = best;
-
-//     const bestMove = (() => {
-//         let row = 0;
-//         let col = 0;
-
-//         return { row, col };
-//     })();
-
-//     const findNextMove = (board) => {
-//         for (let row = 0; row < 3; row++) {
-//             for (let col = 0; col < 3; col++) {
-//                 if (board[row][col] == "_") {
-//                     board[row][col] = player;
-
-//                     let moveVal = minimax(board, isMax); //false for optimalMaxMove and true for optimalMinMove
-
-//                     board[row][col] = "_";
-
-//                     if (isMax) {
-//                         if (moveVal > bestVal) {
-//                             bestVal = moveVal;
-//                             bestMove.row = row;
-//                             bestMove.col = col;
-//                         } else {
-//                             continue;
-//                         }
-//                     } else {
-//                         if (moveVal < bestVal) {
-//                             bestVal = moveVal;
-//                             bestMove.row = row;
-//                             bestMove.col = col;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-
-//         return bestMove;
-//     }
-
-//     return { findNextMove };
-// };
-
-const OptimalMove = (best, player) => { //best: 10000 (min) or -10000 (max); player or opponent;
+const OptimalMove = (best, player, isMax) => { //best: 10000 (min) or -10000 (max); player or opponent; isMax == false max and isMax== true min
     const bestMove = (() => {
         let row = 0;
         let col = 0;
@@ -167,21 +122,30 @@ const OptimalMove = (best, player) => { //best: 10000 (min) or -10000 (max); pla
         return { row, col };
     })();
 
-    const maxMove = (board) => {
+    const findNextMove = (board) => {
         let bestVal = best;
+
         for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 3; col++) {
                 if (board[row][col] == "_") {
                     board[row][col] = player;
-    
-                    let moveVal = minimax(board, false);
+                    
+                    let moveVal = minimax(board, isMax);
     
                     board[row][col] = "_";
     
-                    if (moveVal > bestVal) {
-                        bestVal = moveVal;
-                        bestMove.row = row;
-                        bestMove.col = col;
+                    if (isMax) {
+                        if (moveVal < bestVal) {
+                            bestVal = moveVal;
+                            bestMove.row = row;
+                            bestMove.col = col;
+                        }
+                    } else {
+                        if (moveVal > bestVal) {
+                            bestVal = moveVal;
+                            bestMove.row = row;
+                            bestMove.col = col;
+                        }
                     }
                 }
             }
@@ -190,96 +154,8 @@ const OptimalMove = (best, player) => { //best: 10000 (min) or -10000 (max); pla
         return bestMove;
     }
 
-    const minMove = (board) => {
-        let bestVal = best;
-        for (let row = 0; row < 3; row++) {
-            for (let col = 0; col < 3; col++) {
-                if (board[row][col] == "_") {
-                    board[row][col] = player;
-    
-                    let moveVal = minimax(board, true);
-    
-                    board[row][col] = "_";
-    
-                    if (moveVal < bestVal) {
-                        bestVal = moveVal;
-                        bestMove.row = row;
-                        bestMove.col = col;
-                    }
-                }
-            }
-        }
-    
-        return bestMove;
-    }
-
-    return { maxMove, minMove };
+    return { findNextMove };
 };
-
-function optimalMaxMove(board) {
-    let maxVal = -10000;
-
-    const bestMove = (() => {
-        let row = 0;
-        let col = 0;
-
-        return { row, col };
-    })();
-
-    for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 3; col++) {
-            if (board[row][col] == "_") {
-                board[row][col] = player;
-
-                let moveVal = minimax(board, false);
-
-                board[row][col] = "_";
-
-                if (moveVal > maxVal) {
-                    maxVal = moveVal;
-                    bestMove.row = row;
-                    bestMove.col = col;
-                }
-            }
-        }
-    }
-
-    return bestMove;
-}
-
-function optimalMinMove(board) {
-    let minVal = 10000;
-
-    const bestMove = (() => {
-        let row = 0;
-        let col = 0;
-
-        return { row, col };
-    })();
-
-    for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 3; col++) {
-            if (board[row][col] == "_") {
-                board[row][col] = opponent;
-
-                let moveVal = minimax(board, true);
-
-                board[row][col] = "_";
-
-                if (moveVal < minVal) {
-                    minVal = moveVal;
-                    bestMove.row = row;
-                    bestMove.col = col;
-                }
-            }
-        }
-    }
-
-    return bestMove;
-}
-
-const optimalMaxMoveTest = OptimalMove(-10000, player);
-const optimalMinMoveTest = OptimalMove(10000, opponent);
 
 function updateBoard(board, nextBestMove, isPlayerTurn) {
     if (isPlayerTurn) {
@@ -299,7 +175,7 @@ function runGame() { // Computer vs. computer
     ];
 
     while (evaluateBoard(gameBoard) == 0 && movesRemaining(gameBoard)) {
-        let bestMove = optimalMaxMove(gameBoard);
+        let bestMove = optimalMaxMove.findNextMove(gameBoard);
 
         gameBoard = updateBoard(gameBoard, bestMove, true);
 
@@ -308,7 +184,7 @@ function runGame() { // Computer vs. computer
             break;
         }
 
-        bestMove = optimalMinMove(gameBoard);
+        bestMove = optimalMinMove.findNextMove(gameBoard);
 
         gameBoard = updateBoard(gameBoard, bestMove, false);
     }
@@ -316,38 +192,7 @@ function runGame() { // Computer vs. computer
     return gameBoard;
 }
 
-function runGameTest() { // Computer vs. computer
-    let gameBoard = [
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-    ];
-
-    while (evaluateBoard(gameBoard) == 0 && movesRemaining(gameBoard)) {
-        let bestMove = optimalMaxMoveTest.maxMove(gameBoard);
-
-        gameBoard = updateBoard(gameBoard, bestMove, true);
-
-        // Check if the game has ended before making the opponent's move
-        if (evaluateBoard(gameBoard) != 0 || !movesRemaining(gameBoard)) {
-            break;
-        }
-
-        bestMove = optimalMinMoveTest.minMove(gameBoard);
-
-        gameBoard = updateBoard(gameBoard, bestMove, false);
-    }
-
-    return gameBoard;
-}
-
-// function endGame(board) {
-//     console.log(board);
-// }
-
-// let nextBestMove = optimalMinMove(board3);
-
-// console.log(nextBestMove.row + " " + nextBestMove.col);
+const optimalMaxMove = OptimalMove(-10000, player, false);
+const optimalMinMove = OptimalMove(10000, opponent, true);
 
 console.log(runGame());
-console.log(runGameTest());
