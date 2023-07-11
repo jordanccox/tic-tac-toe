@@ -4,7 +4,7 @@
 
 Inspiration for this project came from [the Odin Project curriculum](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe). At first, I was most interested in practicing writing better code by focusing more intentionally on encapsulation -- i.e., limiting public access to an object's internal variables and methods. After building a functional version of Tic Tac Toe (albeit, a rather boring one), I decided to tackle another challenge: implement an algorithm to play Tic Tac Toe perfectly. I planned to integrate my algorithm with my original version of Tic Tac Toe, but I ended up changing some fundamental patterns that made building a new UI easier than integration. (For example, in my first version of the game I labeled the Tic Tac Toe squares 0 - 8, but in the second one I labeled the squares by rows (0 - 2) and columns (0 - 2), which I found more intuitive to work with.)
 
-You can play the two-player game [here](https://jordanccox.github.io/tic-tac-toe/) or the one-player vs. algorithm version here (link coming soon).
+You can play the two-player game [here](https://jordanccox.github.io/tic-tac-toe/) or the one-player vs. algorithm version [here](https://jordanccox.github.io/tic-tac-toe/human-vs-computer) (coming soon).
 
 ## Design Patterns
 
