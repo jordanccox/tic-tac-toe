@@ -8,7 +8,7 @@ You can play the two-player game [here](https://jordanccox.github.io/tic-tac-toe
 
 ## Design Patterns
 
-Initially, I built this simple Tic Tac Toe game to practice two object-oriented design patterns: **factory functions** and **modules**.
+Initially, I built this game to practice two object-oriented design patterns: **factory functions** and **modules**.
 
 ### Factory Functions
 

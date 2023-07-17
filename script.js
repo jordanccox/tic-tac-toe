@@ -102,7 +102,7 @@ const Gameplay = (() => {
         const squares = document.querySelectorAll(".square");
 
         squares[index].innerHTML = token;
-    }
+    };
 
     initializeGame();
 })();
