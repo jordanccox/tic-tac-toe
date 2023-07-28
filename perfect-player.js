@@ -1,6 +1,3 @@
-// const player = "x"; //maximizer; return 1 if player wins
-// const opponent = "o"; // minimizer; return -1 if opponent wins
-
 function evaluateBoard(b) {
     // Check for win conditions
 
@@ -167,38 +164,6 @@ function updateBoard(board, nextBestMove, isPlayerTurn) {
     return board;
 }
 
-// function runGame() { // Computer vs. computer -- you can ignore this
-
-//     let gameBoard = [
-//         ["_", "_", "_"],
-//         ["_", "_", "_"],
-//         ["_", "_", "_"],
-//     ];
-
-//     while (evaluateBoard(gameBoard) == 0 && movesRemaining(gameBoard)) {
-//         let bestMove = optimalMaxMove.findNextMove(gameBoard);
-
-//         gameBoard = updateBoard(gameBoard, bestMove, true);
-
-//         // Check if the game has ended before making the opponent's move
-//         if (evaluateBoard(gameBoard) != 0 || !movesRemaining(gameBoard)) {
-//             break;
-//         }
-
-//         bestMove = optimalMinMove.findNextMove(gameBoard);
-
-//         gameBoard = updateBoard(gameBoard, bestMove, false);
-//     }
-
-//     return gameBoard;
-// }
-
-
-// const optimalMaxMove = OptimalMove(-10000, player, false);
-// const optimalMinMove = OptimalMove(10000, opponent, true);
-
-// console.log(runGame());
-
 // Human vs. Computer Mode
 
 const Player = (playerName, symbol) => {
@@ -261,7 +226,7 @@ const Gameplay = (() => {
         }
     };
 
-    const handleComputerMove = (gameBoard, player, opponent) => { //Spmething is broken...
+    const handleComputerMove = (gameBoard, player, opponent) => { 
         if (!movesRemaining(gameBoard)) {
             // draw procedures
         }
